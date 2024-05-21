@@ -3,7 +3,11 @@ from tkinter import *
 from tkinter import ttk
 
 #Cores
-cor1 = "#1e1f1e" # preto
+cor1 = "#3B3B3B" # preto
+cor2 = "#FEFFFF" # branco
+cor3 = "#38576B" # azul
+cor4 = "#ECEFF1" # cinza
+cor5 = "#FFAB40" # laranja
 
 janela = Tk()
 janela.title("Calculadora")
