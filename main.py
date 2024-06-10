@@ -25,6 +25,12 @@ frame_corpo.grid(row=1, column=0)
 
 valores_recebidos = ''
 
+#Criando label
+valor_texto = StringVar()
+
+app_label = Label(frame_tela, textvariable=valor_texto, width=16, height=2, padx=7, relief=FLAT, anchor='e', justify=RIGHT, font=('Ivy 18'), bg=cor3, fg=cor2)
+app_label.place(x=0, y=0)
+
 #criando função 
 
 def entrada_valores(event):
@@ -35,15 +41,23 @@ def entrada_valores(event):
     #passando valor para a tela
     valor_texto.set(valores_recebidos)
 
-#Criando label
-valor_texto = StringVar()
 
-app_label = Label(frame_tela, textvariable=valor_texto, width=16, height=2, padx=7, relief=FLAT, anchor='e', justify=RIGHT, font=('Ivy 18'), bg=cor3, fg=cor2)
-app_label.place(x=0, y=0)
+#Cérebro calculador 
+
+def calcular():
+    resultado = eval(valores_recebidos)
+    print(resultado)
+
+#Função limpar tela
+
+def limparTela():
+    global valores_recebidos
+    valores_recebidos = ''
+    valor_texto.set('')
 
 #Botões
 
-b_clear = Button(frame_corpo, text="C", width=11, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_clear = Button(frame_corpo, command = lambda: limparTela(),text="C", width=11, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_clear.place(x=0, y=0)
 
 b_modulo = Button(frame_corpo, command = lambda: entrada_valores('%'), text="%", width=5, height=2, bg=cor4,  font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
@@ -98,7 +112,7 @@ b_0.place(x=0, y=204)
 b_ponto = Button(frame_corpo, command = lambda: entrada_valores('.'),text=".", width=5, height=2, bg=cor4,  font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_ponto.place(x=118, y=204)
 
-b_igual = Button(frame_corpo, command = lambda: entrada_valores('='),text="=", width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_igual = Button(frame_corpo, command = lambda: calcular() ,text="=", width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_igual.place(x=177, y=204)
 
 
