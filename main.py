@@ -11,7 +11,7 @@ cor5 = "#FFAB40" # laranja
 
 janela = Tk()
 janela.title("Calculadora")
-janela.geometry("235x318")
+janela.geometry("235x305")
 janela.config(bg=cor1)
 
 #Frames
@@ -21,12 +21,26 @@ frame_tela.grid(row=0, column=0)
 frame_corpo = Frame(janela, width=300, height=268)
 frame_corpo.grid(row=1, column=0)
 
+#criando função 
+
+def entrada_valores(event):
+    resultado = eval('9+89')
+
+    #passando valor para a tela
+    valor_texto.set(resultado)
+
+#Criando label
+valor_texto = StringVar()
+
+app_label = Label(frame_tela, textvariable=valor_texto, width=16, height=2, padx=7, relief=FLAT, anchor='e', justify=RIGHT, font=('Ivy 18'), bg=cor3, fg=cor2)
+app_label.place(x=0, y=0)
+
 #Botões
 
 b_clear = Button(frame_corpo, text="C", width=11, height=2, bg=cor4, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_clear.place(x=0, y=0)
 
-b_modulo = Button(frame_corpo, text="%", width=5, height=2, bg=cor4,  font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
+b_modulo = Button(frame_corpo, command = lambda: entrada_valores('%'), text="%", width=5, height=2, bg=cor4,  font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_modulo.place(x=118, y=0)
 
 b_divisao = Button(frame_corpo, text="/", width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
@@ -80,7 +94,6 @@ b_ponto.place(x=118, y=204)
 
 b_igual = Button(frame_corpo, text="=", width=5, height=2, bg=cor5, fg=cor2, font=('Ivy 13 bold'), relief=RAISED, overrelief=RIDGE)
 b_igual.place(x=177, y=204)
-
 
 
 janela.mainloop()
