@@ -45,8 +45,10 @@ def entrada_valores(event):
 #Cérebro calculador 
 
 def calcular():
+    global valores_recebidos
     resultado = eval(valores_recebidos)
-    print(resultado)
+    valor_texto.set(str(resultado))
+
 
 #Função limpar tela
 
